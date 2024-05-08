@@ -2,7 +2,7 @@
   <div class="max-w-lg mx-auto">
     <!-- 文言の表示エリア -->
     <h1 class="text-3xl py-3 mt-4">表示画面</h1>
-    <div class="bg-white shadow-md rounded-md p-4 mb-4">
+    <div class="show-content bg-white shadow-md rounded-md p-4 mb-4">
       <p class="text-lg text-gray-800">{{ selectedItem }}</p>
     </div>
     <!-- ボタン -->
@@ -23,3 +23,8 @@ function getRandomItemByRegistMenues() {
     registMenues.value[Math.floor(Math.random() * registMenues.value.length)];
 }
 </script>
+<style>
+ .show-content{
+    opacity: 0.7;   
+}
+</style>
