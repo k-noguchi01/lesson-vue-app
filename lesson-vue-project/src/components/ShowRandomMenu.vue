@@ -16,11 +16,12 @@
 </template>
 <script setup>
 import {ref} from "vue";
-const registMenues = ref([]);
+import {useStore} from "vuex"
+const store = useStore()
 const selectedItem = ref(null);
 function getRandomItemByRegistMenues() {
   selectedItem.value =
-    registMenues.value[Math.floor(Math.random() * registMenues.value.length)];
+    store.state.registMenues[Math.floor(Math.random() * store.state.registMenues.length)];
 }
 </script>
 <style>

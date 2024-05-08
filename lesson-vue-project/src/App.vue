@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import Vuex, { createStore } from 'vuex';
 import ShowRandomMenu from "./components/ShowRandomMenu.vue";
 import InputMenu from "./components/InputMenu.vue";
 const isChecked = ref(true);
@@ -39,4 +40,5 @@ const isChecked = ref(true);
     <ShowRandomMenu v-else />
   </div>
 </template>
-<style scoped></style>
+<style scoped>
+</style>

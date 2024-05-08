@@ -2,7 +2,7 @@
   <div class="inner-content">
     <h1 class="text-3xl py-3 mt-4">Register a Menu</h1>
     <div class="flex justify-conter w-auto">
-      <div class="grid justify-items-center">
+      <div class="justify-items-center">
         <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div class="mb-4">
             <label
@@ -31,7 +31,7 @@
       </div>
       <div
         class="bg-white shadow-md rounded ml-4 px-8 pt-6 pb-8 mb-4"
-        v-if="registMenues.length !== 0"
+        v-if="store.state.registMenues.length !== 0"
       >
       
       <label
@@ -40,31 +40,54 @@
             >
             meun
             </label>
+        <div v-for="(obj,index) in store.state.registMenues"
+          :key="index"
+          @click="onTouchDeleteMenu(index)"
+        >
         <p
-          v-for="(text, index) in registMenues"
+          v-for="(value,index) in obj"
           :key="index"
           :class="[
             'px-4 py-2 rounded-md animate-slide-in-left',
-            displayAnimation,
           ]"
         >
-          {{ text }}
+          {{ value }}
         </p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script setup>
 import { ref } from "vue";
-const registMenues = ref([]);
+import {useStore} from "vuex"
 const inputMenu = ref("");
-function onAddMenu() {
+
+const store = useStore()
+console.log(store.state.registMenues[0]);
+
+const onAddMenu=()=> {
   if(inputMenu!==""){
-    registMenues.value.push(inputMenu.value);
+    store.commit('addMenu',inputMenu);
+    console.log(store.state.registMenues);
     inputMenu.value = "";
     alert("successful");
+    saveFileForJson()
   }
-  console.log(registMenues);
+}
+const onTouchDeleteMenu=(index)=>{
+  console.log(index);
+  store.commit('deleteMenu',index)
+}
+const saveFileForJson=()=>{
+  const jsonData = store.state.registMenues;
+  console.log(JSON.stringify(jsonData));
+  const blob = new Blob([JSON.stringify(jsonData)],null,' ')
+  const link = document.createElement('a')
+  link.href=URL.createObjectURL(blob)
+  link.download='exportDta.json'
+  link.click();
+  link.remove();
 }
 </script>
 <style>
