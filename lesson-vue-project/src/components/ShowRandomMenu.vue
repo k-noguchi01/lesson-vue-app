@@ -1,27 +1,29 @@
 <template>
-  <div class="max-w-lg mx-auto">
+  <div class="mx-auto">
     <!-- 文言の表示エリア -->
-    <h1 class="text-3xl py-3 mt-4">表示画面</h1>
-    <div class="show-content bg-white shadow-md rounded-md p-4 mb-4">
-      <p class="text-lg text-gray-800">{{ selectedItem }}</p>
+
+    <p class="text-3xl py-3 mt-4">What's for dinner today?</p>
+    <div v-if="selectedItem!==null" class="show-content bg-white shadow-md rounded-md p-4 mb-4">
+      <p class="text-lg text-gray-800">{{ selectedItem["menu-name"]}}</p>
     </div>
     <!-- ボタン -->
     <button
       @click="getRandomItemByRegistMenues"
-      class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+      class="px-4 py-2 font-bold text-blue-700 rounded-md border-1.5 hover:bg-white border-blue-300 hover:opacity-60 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 disabled:opacity-80 disabled:cursor-not-allowed"
     >
-      表示
+      get menu
     </button>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import {ref} from "vue";
 import {useStore} from "vuex"
 const store = useStore()
-const selectedItem = ref(null);
+const selectedItem = ref<number|null>(null);
 function getRandomItemByRegistMenues() {
-  selectedItem.value =
+  selectedItem.value=
     store.state.registMenues[Math.floor(Math.random() * store.state.registMenues.length)];
+    console.log(selectedItem.value?["menu-name"]:null)
 }
 </script>
 <style>

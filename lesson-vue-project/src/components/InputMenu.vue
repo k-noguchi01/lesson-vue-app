@@ -20,7 +20,7 @@
           </div>
           <div class="flex items-center justify-center">
             <button
-              class="add-button hover:bg-white text-white blue border-blue-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              class="add-button hover:opacity-80 border-none text-white blue font-bold border-blue-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
               @click="onAddMenu"
             >
@@ -33,62 +33,47 @@
         class="bg-white shadow-md rounded ml-4 px-8 pt-6 pb-8 mb-4"
         v-if="store.state.registMenues.length !== 0"
       >
-      
-      <label
-              class="block text-gray-700 text-sm font-bold mb-2"
-              for="username"
-            >
-            meun
-            </label>
-        <div v-for="(obj,index) in store.state.registMenues"
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="username"
+        >
+          meun
+        </label>
+        <div
+          v-for="(obj, index) in store.state.registMenues"
           :key="index"
           @click="onTouchDeleteMenu(index)"
+          class="box hover:bg-gray-50 rounded-md cursor-pointer"
         >
-        <p
-          v-for="(value,index) in obj"
-          :key="index"
-          :class="[
-            'px-4 py-2 rounded-md animate-slide-in-left',
-          ]"
-        >
-          {{ value }}
-        </p>
+          <p
+            v-for="(value, index) in obj"
+            :key="index"
+            :class="['px-4 py-2 rounded-md animate-slide-in-left']"
+          >
+            {{ value }}
+          </p>
         </div>
       </div>
     </div>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
-import {useStore} from "vuex"
-const inputMenu = ref("");
+import { useStore } from "vuex";
+const inputMenu= ref<string>("");
 
-const store = useStore()
-console.log(store.state.registMenues[0]);
+const store = useStore();
 
-const onAddMenu=()=> {
-  if(inputMenu!==""){
-    store.commit('addMenu',inputMenu);
-    console.log(store.state.registMenues);
+const onAddMenu = () => {
+  if (inputMenu.value !== "") {
+    store.commit("addMenu", inputMenu);
     inputMenu.value = "";
     alert("successful");
-    saveFileForJson()
   }
-}
-const onTouchDeleteMenu=(index)=>{
-  console.log(index);
-  store.commit('deleteMenu',index)
-}
-const saveFileForJson=()=>{
-  const jsonData = store.state.registMenues;
-  console.log(JSON.stringify(jsonData));
-  const blob = new Blob([JSON.stringify(jsonData)],null,' ')
-  const link = document.createElement('a')
-  link.href=URL.createObjectURL(blob)
-  link.download='exportDta.json'
-  link.click();
-  link.remove();
-}
+};
+const onTouchDeleteMenu = (index) => {
+  store.commit("deleteMenu", index);
+};
 </script>
 <style>
 .main-content {
@@ -107,7 +92,7 @@ const saveFileForJson=()=>{
     opacity: 1;
   }
 }
-.add-button{
-  background:linear-gradient(90deg,#66b6ea,#8743ff);
+.add-button {
+  background: linear-gradient(90deg, #66b6ea, #8743ff);
 }
 </style>
