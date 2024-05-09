@@ -34,7 +34,7 @@ import { ref, watch } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
 const isChecked = ref(store.state.isChecked);
-watch(isChecked, (newValue, oldValue) => {
+watch(isChecked, (newValue, _) => {
   store.commit("toggleRadio", newValue);
 });
 </script>
