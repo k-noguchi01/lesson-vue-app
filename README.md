@@ -3,6 +3,7 @@
 ## 使用技術
 
 - Vue3(3.4)
+- tailwind CSS
 
 ## 仕様
 
