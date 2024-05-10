@@ -25,7 +25,6 @@
           }"
         ></div>
       </div>
-      <span class="ml-5 text-gray-700">画面切り替え</span>
     </label>
   </div>
 </template>

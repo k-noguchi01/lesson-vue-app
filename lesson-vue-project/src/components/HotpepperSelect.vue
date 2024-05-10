@@ -87,14 +87,12 @@ const getDataByAxiosByHotpepper = async (type, key, option = {}) => {
   return resultsData;
 };
 (async()=>{
-console.log("start HotpepperSelected Created")
   axios.defaults.withCredentials = false;
   const resultsData = await getDataByAxiosByHotpepper("large_area", api_key);
   const jsonData = changeXml2Json(resultsData);
   jsonData.results.large_area.forEach((element) => {
     largeAreaData.value.push(element);
   });
-console.log("end HotpepperSelected Created")
 })();
 </script>
 <style></style>
