@@ -64,14 +64,14 @@ const inputMenu= ref<string>("");
 
 const store = useStore();
 
-const onAddMenu = () => {
+const onAddMenu = ():void => {
   if (inputMenu.value !== "") {
     store.commit("addMenu", inputMenu);
     inputMenu.value = "";
     alert("successful");
   }
 };
-const onTouchDeleteMenu = (index) => {
+const onTouchDeleteMenu = (index:string):void => {
   store.commit("deleteMenu", index);
 };
 </script>
