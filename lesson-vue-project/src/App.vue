@@ -9,7 +9,6 @@ const store = useStore();
 <template>
   <div>
     <Header />
-    <HotpepperSelect />
     <InputMenu v-if="store.state.isChecked" />
     <ShowRandomMenu v-else />
   </div>
