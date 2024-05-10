@@ -75,7 +75,7 @@ const getRamdomNumberByGourmentData = (gorumentData, ramdonmCount) => {
   return gorumentData[getRamdomNumber(1, ramdonmCount)];
 };
 const getDataByAxiosByHotpepper = async (type, key, option = {}) => {
-  const base_url = `http://webservice.recruit.co.jp/hotpepper/${type}/v1/?key=${key}`;
+  const base_url = `https://webservice.recruit.co.jp/hotpepper/${type}/v1/?key=${key}`;
   let option_param = "";
   if (option) {
     Object.entries(option).forEach(([key, value]) => {
