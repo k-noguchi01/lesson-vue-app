@@ -11,19 +11,19 @@
     </div>
     <!-- ボタン -->
     <button
-      @click="getRandomItemByRegistMenues"
+      @click="setRandomItemByRegistMenues"
       class="px-4 py-2 font-bold text-blue-700 rounded-md border-1.5 hover:bg-white border-blue-300 hover:opacity-60 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 disabled:opacity-80 disabled:cursor-not-allowed"
     >
       get menu
     </button>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
-const selectedItem = ref("");
-const getRandomItemByRegistMenues = () => {
+const selectedItem = ref<string>("");
+const setRandomItemByRegistMenues = ():void => {
   selectedItem.value =
     store.state.registMenues[
       Math.floor(Math.random() * store.state.registMenues.length)
