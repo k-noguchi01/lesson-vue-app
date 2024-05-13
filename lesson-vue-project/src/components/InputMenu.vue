@@ -37,19 +37,21 @@
           class="block text-gray-700 text-sm font-bold mb-2"
           for="username"
         >
+        <font-awesome-icon icon="fas fa-utensils" class="mr-1"/>
           meun
         </label>
         <div
           v-for="(obj, index) in store.state.registMenues"
           :key="index"
           @click="onTouchDeleteMenu(index)"
-          class="box hover:bg-gray-50 rounded-md cursor-pointer"
+          class="flex box hover:bg-gray-50 rounded-md cursor-pointer justify-start"
         >
           <p
             v-for="(value, index) in obj"
             :key="index"
             :class="['px-4 py-2 rounded-md animate-slide-in-left']"
           >
+          <font-awesome-icon :icon="['fas', 'drumstick-bite']" />
             {{ value }}
           </p>
         </div>
@@ -71,7 +73,7 @@ const onAddMenu = ():void => {
     alert("successful");
   }
 };
-const onTouchDeleteMenu = (index:string):void => {
+const onTouchDeleteMenu = (index:number):void => {
   store.commit("deleteMenu", index);
 };
 </script>

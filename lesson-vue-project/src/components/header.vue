@@ -2,6 +2,7 @@
   <div class="fixed top-4 right-4">
     <input type="checkbox" id="toggle" class="sr-only" v-model="isChecked" />
     <label for="toggle" class="flex items-center cursor-pointer">
+    <font-awesome-icon class="mr-2" :icon="['fas', 'house']" />
       <div class="relative w-16 h-8 bg-gray-300 rounded-full p-1">
         <div
           class="absolute left-1 top-1 bg-white rounded-full shadow-md transition-transform"
@@ -25,6 +26,7 @@
           }"
         ></div>
       </div>
+        <font-awesome-icon :icon="['fas', 'dice']" class="ml-3"/>
     </label>
   </div>
 </template>

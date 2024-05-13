@@ -1,29 +1,22 @@
 <template>
   <div>
     <div v-if="showFlag === 0" class="flex justify-between">
-      <div
-        @click="changeShowFlag(1)"
-        class="opacity-70 bg-sky-100 cursor-pointer hover:shadow-md h-72 mx-4 mb-4 md:mb-0 bg-white shadow-lg rounded-lg overflow-hidden"
-      >
         <!-- カード1の内容 -->
-        <div class="flex justify-center items-center p-4 h-72 w-72">
-          <p class="text-center">Select Random Store?</p>
-        </div>
+        <div @click="changeShowFlag(1)" class="flex mr-7 justify-center bg-sky-100 cursor-pointer hover:shadow-md items-center p-4 h-72 w-72 rounded-full">
+        <p class="text-center">Select Random Store?</p>
+        <font-awesome-icon :icon="['fas', 'shop']" />
       </div>
-      <div
-        @click="changeShowFlag(2)"
-        class="opacity-70 cursor-pointer hover:shadow-md h-72 mx-4 mb-4 bg-white shadow-lg rounded-lg overflow-hidden"
-      >
         <!-- カード2の内容 -->
-        <div class="flex bg-violet-100 justify-center items-center p-4 h-72 w-72">
+        <div @click="changeShowFlag(2)" class="flex hover:shadow-md ml-7 cursor-pointer  rounded-full bg-violet-100 justify-center items-center p-4 h-72 w-72">
           <p class="text-center">Select Register Menu?</p>
+          <br>
+          <font-awesome-icon :icon="['fas', 'bowl-rice']" />
         </div>
-      </div>
     </div>
 <ShowRegister v-if="showFlag===2" />
 <hotpepperSelect v-if="showFlag===1" />
 <div v-if="showFlag!==0">
-  <a @click="initShowFlag" class="cursor-pointer mt-5 hover:text-gray-400">back...?</a>
+  <a @click="initShowFlag" class="cursor-pointer mt-5 hover:text-gray-400"><font-awesome-icon class="mr-2" :icon="['fas', 'arrow-left']" />back...</a>
 </div>
   </div>
 </template>

@@ -4,6 +4,15 @@ import jsonData from "../public/data/data.json";
 import "./style.css";
 import App from "./App.vue";
 import "./index.css";
+import { library } from '@fortawesome/fontawesome-svg-core'
+/* font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+import {
+  fas
+} from "@fortawesome/free-solid-svg-icons";
+
+library.add(fas);
 
 const store = createStore({
   state() {
@@ -31,4 +40,5 @@ const store = createStore({
 
 const app = createApp(App);
 app.use(store);
+app.component('font-awesome-icon',FontAwesomeIcon)
 app.mount("#app");

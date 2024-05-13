@@ -4,7 +4,7 @@
 
     <p class="text-3xl py-3 mt-4">What's for dinner today?</p>
     <div
-      v-if="selectedItem !== null"
+      v-if="selectedItem!== null"
       class="show-content bg-white shadow-md rounded-md p-4 mb-4"
     >
       <p class="text-lg text-gray-800">{{ selectedItem["menu-name"] }}</p>

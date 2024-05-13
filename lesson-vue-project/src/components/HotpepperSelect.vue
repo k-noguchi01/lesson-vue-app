@@ -4,7 +4,7 @@
       <label
         for="countries"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >Select an large area</label
+        ><font-awesome-icon :icon="['fas', 'map']" class="mr-2" />Select an large area</label
       >
       <select
         id="countries"
@@ -26,6 +26,8 @@
         v-if="selectedShop.length!==0"
      >
         <p class="mb-2">
+
+<font-awesome-icon :icon="['fas', 'champagne-glasses']" class="mr-3" />
           <a
             v-bind:href="selectedShop[0].urls.pc._text"
             @click="clickShop"
@@ -34,7 +36,6 @@
             >{{ selectedShop[0].name._text}}</a
           >
         </p>
-{{ selectedShop[0].urls._text }}
       </div>
     </form>
   </div>
