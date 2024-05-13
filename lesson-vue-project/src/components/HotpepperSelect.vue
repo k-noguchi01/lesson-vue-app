@@ -61,11 +61,11 @@ const preferenceOptionChange = async () => {
       count: ramdomCount,
     }
   );
+  selectedShop.value.splice(0)
   selectedShop.value.push(getRamdomNumberByGourmentData(
     changeXml2Json(requestGourmentData).results.shop,
     ramdomCount
   ));
-  console.log(selectedShop);
 };
 const getRamdomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + 1;
