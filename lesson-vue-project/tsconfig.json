@@ -1,0 +1,6 @@
+{
+    "compilerOptions": {
+        "verbatimModuleSyntax": false,
+        "allowSyntheticDefaultImports": true
+    }
+}
