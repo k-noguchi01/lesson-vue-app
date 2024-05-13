@@ -30,7 +30,6 @@
 <font-awesome-icon :icon="['fas', 'champagne-glasses']" class="mr-3" />
           <a
             v-bind:href="selectedShop[0].urls.pc._text"
-            @click="clickShop"
             class="text-blue-500 hover:underline"
             target="_blank"
             >{{ selectedShop[0].name._text}}</a
@@ -40,19 +39,19 @@
     </form>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import { changeXml2Json } from "../utils/convert_data";
 import { ref } from "vue";
 import axios from "axios";
-const largeAreaData = ref([]);
-const selectedLargeAreaCode = ref("");
-const selectedShop = ref([]);
-const api_key = import.meta.env.VITE_APP_API_KEY;
-const GET_DATA_MIN_COUINT = 1;
-const GET_DATA_MAX_COUINT = 100;
-const preferenceOptionChange = async () => {
-  const ramdomCount = getRamdomNumber(GET_DATA_MIN_COUINT, GET_DATA_MAX_COUINT);
-  const ramdomStart = getRamdomNumber(GET_DATA_MIN_COUINT, GET_DATA_MAX_COUINT);
+const largeAreaData = ref<Object[]>([]);
+const selectedLargeAreaCode = ref<string>("");
+const selectedShop = ref<Object[]>([]);
+const api_key:string = import.meta.env.VITE_APP_API_KEY;
+const GET_DATA_MIN_COUINT:number= 1;
+const GET_DATA_MAX_COUINT:number = 100;
+const preferenceOptionChange = async ():Promise<void>=> {
+  const ramdomCount:number = getRamdomNumber(GET_DATA_MIN_COUINT, GET_DATA_MAX_COUINT);
+  const ramdomStart:number = getRamdomNumber(GET_DATA_MIN_COUINT, GET_DATA_MAX_COUINT);
   const requestGourmentData = await getDataByAxiosByHotpepper(
     "gourmet",
     api_key,
@@ -68,22 +67,21 @@ const preferenceOptionChange = async () => {
     ramdomCount
   ));
 };
-const getRamdomNumber = (min, max) => {
+const getRamdomNumber = (min:number, max:number):number => {
   return Math.floor(Math.random() * (max - min)) + 1;
 };
 
-const getRamdomNumberByGourmentData = (gorumentData, ramdonmCount) => {
+const getRamdomNumberByGourmentData = (gorumentData, ramdonmCount:number) => {
   return gorumentData[getRamdomNumber(1, ramdonmCount)];
 };
-const getDataByAxiosByHotpepper = async (type, key, option = {}) => {
-  const base_url = `https://webservice.recruit.co.jp/hotpepper/${type}/v1/?key=${key}`;
-  let option_param = "";
+const getDataByAxiosByHotpepper = async (type:string, key:string, option = {}) => {
+  const base_url:string = `https://webservice.recruit.co.jp/hotpepper/${type}/v1/?key=${key}`;
+  let option_param:string = "";
   if (option) {
     Object.entries(option).forEach(([key, value]) => {
       option_param += `&${key}=${value}`;
     });
   }
-  console.log(base_url + option_param);
   const resultsData = await axios.get(base_url + option_param);
   return resultsData;
 };
