@@ -30,12 +30,12 @@
     </label>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import { ref, watch } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
-const isChecked = ref(store.state.isChecked);
-watch(isChecked, (newValue, _) => {
+const isChecked = ref<boolean>(store.state.isChecked);
+watch(isChecked, (newValue:boolean, _) => {
   store.commit("toggleRadio", newValue);
 });
 </script>
