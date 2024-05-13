@@ -2,12 +2,12 @@
   <div>
     <div v-if="showFlag === 0" class="flex justify-between">
         <!-- カード1の内容 -->
-        <div @click="changeShowFlag(1)" class="flex mr-7 justify-center bg-sky-100 cursor-pointer hover:shadow-md items-center p-4 h-72 w-72 rounded-full">
+        <div @click="changeShowFlag(SHOW_RANDOM_STORE)" class="flex mr-7 justify-center bg-sky-100 cursor-pointer hover:shadow-md items-center p-4 h-72 w-72 rounded-full">
         <p class="text-center">Select Random Store?</p>
         <font-awesome-icon :icon="['fas', 'shop']" />
       </div>
         <!-- カード2の内容 -->
-        <div @click="changeShowFlag(2)" class="flex hover:shadow-md ml-7 cursor-pointer  rounded-full bg-violet-100 justify-center items-center p-4 h-72 w-72">
+        <div @click="changeShowFlag(SHOW_REGIST_MENU)" class="flex hover:shadow-md ml-7 cursor-pointer  rounded-full bg-violet-100 justify-center items-center p-4 h-72 w-72">
           <p class="text-center">Select Register Menu?</p>
           <br>
           <font-awesome-icon :icon="['fas', 'bowl-rice']" />
@@ -20,16 +20,17 @@
 </div>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import ShowRegister from "./ShowRegister.vue"
-import HotpepperSelect from "./HotpepperSelect.vue"
-const showFlag = ref(0);
-const changeShowFlag = (compNum) => {
+import  HotpepperSelect from "./HotpepperSelect.vue"
+const SHOW_RANDOM_STORE:number=1
+const SHOW_REGIST_MENU:number=2
+const showFlag = ref<number>(0);
+const changeShowFlag = (compNum:number):void => {
   showFlag.value = compNum;
-  console.log(showFlag.value);
 };
-const initShowFlag = ()=>{
+const initShowFlag = ():void=>{
   showFlag.value=0;
 }
 </script>
