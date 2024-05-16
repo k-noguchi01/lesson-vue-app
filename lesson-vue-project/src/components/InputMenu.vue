@@ -1,6 +1,5 @@
 <template>
   <div class="inner-content">
-    <h1 class="text-3xl py-3 mt-4">Register a Menu</h1>
     <div class="flex justify-conter w-auto">
       <div class="justify-items-center">
         <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -9,7 +8,7 @@
               class="block text-gray-700 text-sm font-bold mb-2"
               for="username"
             >
-              what's the stape food?
+              主食登録
             </label>
             <input
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

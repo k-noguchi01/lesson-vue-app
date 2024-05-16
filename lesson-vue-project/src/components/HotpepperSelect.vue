@@ -4,7 +4,7 @@
       <label
         for="countries"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        ><font-awesome-icon :icon="['fas', 'map']" class="mr-2" />Select an large area</label
+        ><font-awesome-icon :icon="['fas', 'map']" class="mr-2" />都道府県選択</label
       >
       <select
         id="countries"

@@ -3,12 +3,12 @@
     <div v-if="showFlag === 0" class="flex justify-between">
         <!-- カード1の内容 -->
         <div @click="changeShowFlag(SHOW_RANDOM_STORE)" class="flex mr-7 justify-center bg-sky-100 cursor-pointer hover:shadow-md items-center p-4 h-72 w-72 rounded-full">
-        <p class="text-center">Select Random Store?</p>
+        <p class="text-center">お店を選ぶ</p>
         <font-awesome-icon :icon="['fas', 'shop']" />
       </div>
         <!-- カード2の内容 -->
         <div @click="changeShowFlag(SHOW_REGIST_MENU)" class="flex hover:shadow-md ml-7 cursor-pointer  rounded-full bg-violet-100 justify-center items-center p-4 h-72 w-72">
-          <p class="text-center">Select Register Menu?</p>
+          <p class="text-center">主食を選ぶ</p>
           <br>
           <font-awesome-icon :icon="['fas', 'bowl-rice']" />
         </div>
